@@ -1,0 +1,206 @@
+/* SlotDojo: Dojo Console (admin) design tokens
+   Brand-true to the shipped Flutter theme, pushed further.
+   Crimson #DC2626 on black, Inter UI, Archivo display, glassmorphism.
+*/
+
+:root {
+  /* ── Ground (dojo black) ── */
+  --ink-000: #060606;   /* deepest: app bg */
+  --ink-050: #0A0A0A;   /* dojoBlack */
+  --ink-100: #111111;   /* surfaceBlack */
+  --ink-150: #161616;
+  --ink-200: #1A1A1A;   /* surfaceVariant */
+  --ink-250: #1E1E1E;   /* surfaceElevated */
+  --ink-300: #242424;
+  --ink-400: #2E2E2E;
+
+  /* ── Crimson (the cutting edge) ── */
+  --crim-300: #F87171;
+  --crim-400: #EF4444;  /* crimsonLight */
+  --crim-500: #DC2626;  /* crimsonPrimary */
+  --crim-600: #B91C1C;  /* crimsonDark */
+  --crim-700: #7F1414;
+  --crim-900: #3B0A0A;
+  --crim-glow: rgba(220, 38, 38, 0.45);
+
+  /* ── Earned gold (Audible "owned/downloaded" state) ── */
+  --gold-400: #F0C868;
+  --gold-500: #E0A93B;
+  --gold-600: #B8842A;
+  --gold-glow: rgba(224, 169, 59, 0.4);
+
+  /* ── Jade (active / live / success) ── */
+  --jade-400: #34D399;
+  --jade-500: #10B981;
+
+  /* ── Text ── */
+  --tx-100: #F5F5F5;
+  --tx-200: #E5E5E5;    /* darkText */
+  --tx-300: #B0B0B0;    /* darkTextSecondary */
+  --tx-400: #808080;    /* darkTextTertiary */
+  --tx-500: #5A5A5A;
+
+  /* ── Hairlines / glass ── */
+  --hair: rgba(255,255,255,0.07);
+  --hair-2: rgba(255,255,255,0.12);
+  --hair-3: rgba(255,255,255,0.18);
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.06);
+
+  /* ── Type ── */
+  --ff-display: "Archivo", "Inter", system-ui, sans-serif;
+  --ff-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --ff-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ff-jp: "Shippori Mincho", serif;
+
+  /* ── Radius ── */
+  --r-1: 4px; --r-2: 8px; --r-3: 12px; --r-4: 18px; --r-5: 26px;
+
+  /* ── Shadow ── */
+  --sh-1: 0 1px 2px rgba(0,0,0,0.4);
+  --sh-2: 0 4px 16px rgba(0,0,0,0.4);
+  --sh-3: 0 12px 40px rgba(0,0,0,0.55);
+  --sh-glow: 0 0 28px var(--crim-glow);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+.dojo {
+  font-family: var(--ff-ui);
+  background: var(--ink-000);
+  color: var(--tx-200);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.dojo *::selection { background: var(--crim-500); color: #fff; }
+
+/* scrollbars */
+.dojo *::-webkit-scrollbar { width: 10px; height: 10px; }
+.dojo *::-webkit-scrollbar-thumb { background: var(--ink-300); border-radius: 8px; border: 3px solid transparent; background-clip: padding-box; }
+.dojo *::-webkit-scrollbar-thumb:hover { background: var(--ink-400); background-clip: padding-box; }
+
+/* ── Display headline: stamped, condensed energy ── */
+.dj-display {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: var(--tx-100);
+}
+.dj-stamp {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Eyebrow / kicker ── */
+.dj-kicker {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tx-400);
+}
+.dj-label {
+  font-family: var(--ff-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tx-400);
+}
+.dj-mono { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
+.dj-jp { font-family: var(--ff-jp); }
+.dj-body { font-size: 14px; line-height: 1.55; color: var(--tx-300); }
+
+/* ── Kanji seal ── */
+.dj-seal {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--crim-500);
+  color: #fff;
+  font-family: var(--ff-jp);
+  line-height: 1;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), 0 2px 10px var(--crim-glow);
+}
+
+/* ── Glass card ── */
+.dj-glass {
+  background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--hair-2);
+  border-radius: var(--r-4);
+}
+
+/* ── Buttons ── */
+.dj-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 42px; padding: 0 18px; border: none; cursor: pointer;
+  font-family: var(--ff-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  border-radius: var(--r-2); color: #fff;
+  background: var(--crim-500);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 12px var(--crim-glow);
+  transition: transform .12s, box-shadow .15s, background .15s;
+}
+.dj-btn:hover { background: var(--crim-400); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 18px var(--crim-glow); }
+.dj-btn:active { transform: scale(0.97); }
+.dj-btn.ghost {
+  background: transparent; color: var(--tx-200);
+  box-shadow: inset 0 0 0 1px var(--hair-3);
+}
+.dj-btn.ghost:hover { background: var(--glass-2); box-shadow: inset 0 0 0 1px var(--hair-3); }
+.dj-btn.gold {
+  background: var(--gold-500); color: #1A1206;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 12px var(--gold-glow);
+}
+.dj-btn.gold:hover { background: var(--gold-400); }
+.dj-btn.sm { height: 34px; padding: 0 13px; font-size: 12px; }
+.dj-btn.lg { height: 50px; padding: 0 24px; font-size: 15px; }
+.dj-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Chips ── */
+.dj-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 999px;
+  font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--hair-2); color: var(--tx-300); background: var(--glass);
+}
+.dj-chip.crim { color: var(--crim-300); border-color: rgba(239,68,68,0.4); background: rgba(220,38,38,0.1); }
+.dj-chip.gold { color: var(--gold-400); border-color: rgba(224,169,59,0.4); background: rgba(224,169,59,0.1); }
+.dj-chip.jade { color: var(--jade-400); border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.1); }
+
+/* ── Inputs ── */
+.dj-input {
+  width: 100%; height: 42px; padding: 0 14px;
+  background: var(--ink-100); border: 1px solid var(--hair-2);
+  border-radius: var(--r-2); color: var(--tx-100);
+  font-family: var(--ff-ui); font-size: 14px; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.dj-input:focus { border-color: var(--crim-500); box-shadow: 0 0 0 3px rgba(220,38,38,0.18); }
+.dj-input::placeholder { color: var(--tx-500); }
+textarea.dj-input { height: auto; padding: 12px 14px; line-height: 1.55; resize: vertical; min-height: 88px; font-family: var(--ff-ui); }
+
+/* volatility pips */
+.dj-vol { display: inline-flex; gap: 3px; }
+.dj-vol i { width: 7px; height: 7px; display: block; background: var(--ink-400); }
+.dj-vol i.on { background: var(--crim-500); }
+.dj-vol i.on.hi { background: var(--crim-400); box-shadow: 0 0 6px var(--crim-glow); }
+
+/* belt rank bar */
+.dj-belt { height: 4px; border-radius: 2px; background: var(--ink-300); overflow: hidden; }
+.dj-belt > i { display: block; height: 100%; background: linear-gradient(90deg, var(--crim-600), var(--crim-400)); }
+
+/* focus halo for keyboard a11y */
+.dj-btn:focus-visible, .dj-input:focus-visible { outline: 2px solid var(--crim-400); outline-offset: 2px; }
+
+@keyframes dj-spin { to { transform: rotate(360deg); } }
+/* Enhancement only: never gates base visibility (opacity stays at default 1).
+   Animating transform alone means a stalled/again-unsupported animation still
+   shows the element. */
+@keyframes dj-fade-up { from { transform: translateY(8px); } to { transform: none; } }
+.dj-fade-up { animation: dj-fade-up .3s cubic-bezier(.2,.7,.3,1); }
+@keyframes dj-pop { 0% { transform: scale(.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }

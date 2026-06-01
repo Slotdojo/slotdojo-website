@@ -1,0 +1,142 @@
+/* Slot Dojo — design tokens
+   Palette: near-black shadow, oxblood crimson, warm ivory
+   Type:    Instrument Serif (editorial), IBM Plex Sans (body/UI), JetBrains Mono (data)
+   All colors in oklch where meaningful.
+*/
+
+:root {
+  /* ── Shadow (near-black, warm) ── */
+  --ink-000: oklch(0.08 0.008 30);   /* canvas */
+  --ink-050: oklch(0.12 0.010 30);   /* surface */
+  --ink-100: oklch(0.16 0.012 30);   /* raised */
+  --ink-200: oklch(0.22 0.014 30);   /* hairline zone */
+  --ink-300: oklch(0.32 0.014 30);
+  --ink-400: oklch(0.48 0.012 30);   /* muted text */
+  --ink-500: oklch(0.62 0.010 30);
+  --ink-600: oklch(0.76 0.010 40);   /* body on dark */
+
+  /* ── Ivory / parchment ── */
+  --bone-100: oklch(0.93 0.012 75);  /* primary text on dark */
+  --bone-200: oklch(0.88 0.015 70);
+  --bone-300: oklch(0.80 0.018 65);
+
+  /* ── Crimson (oxblood, earned) ── */
+  --crim-900: oklch(0.32 0.120 22);  /* deep */
+  --crim-700: oklch(0.46 0.160 25);  /* primary */
+  --crim-600: oklch(0.54 0.180 25);  /* hot */
+  --crim-400: oklch(0.68 0.150 28);  /* accent line */
+  --crim-glow: oklch(0.62 0.180 25 / 0.35);
+
+  /* ── Signal (only 3 states, high contrast) ── */
+  --sig-sit: oklch(0.78 0.150 100);  /* amber: sit down NOW */
+  --sig-hold: oklch(0.70 0.080 180); /* jade: hold state */
+  --sig-exit: oklch(0.62 0.190 25);  /* crimson: walk away */
+
+  /* ── Hairlines & glass ── */
+  --hair: oklch(1 0 0 / 0.08);
+  --hair-strong: oklch(1 0 0 / 0.14);
+  --glass-bg: oklch(0.14 0.010 30 / 0.55);
+  --glass-brd: oklch(1 0 0 / 0.06);
+
+  /* ── Type ── */
+  --ff-serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+  --ff-sans:  "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --ff-mono:  "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --ff-jp:    "Shippori Mincho", "Instrument Serif", serif;
+
+  /* ── Spacing (4-base) ── */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 40px; --s-9: 56px;
+
+  /* ── Radius ── */
+  --r-1: 4px; --r-2: 8px; --r-3: 14px; --r-4: 22px; --r-pill: 999px;
+}
+
+/* Base */
+.sd {
+  font-family: var(--ff-sans);
+  color: var(--bone-100);
+  background: var(--ink-000);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+.sd * { box-sizing: border-box; }
+
+/* Type utilities */
+.sd-serif   { font-family: var(--ff-serif); font-weight: 400; letter-spacing: -0.01em; }
+.sd-mono    { font-family: var(--ff-mono); font-feature-settings: "tnum","zero"; letter-spacing: 0; }
+.sd-jp      { font-family: var(--ff-jp); }
+.sd-kicker  { font-family: var(--ff-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500); }
+.sd-label   { font-family: var(--ff-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-500); }
+.sd-h1      { font-family: var(--ff-serif); font-size: 44px; line-height: 1; letter-spacing: -0.02em; font-weight: 400; }
+.sd-h2      { font-family: var(--ff-serif); font-size: 30px; line-height: 1.05; letter-spacing: -0.015em; }
+.sd-h3      { font-family: var(--ff-sans); font-size: 17px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
+.sd-body    { font-family: var(--ff-sans); font-size: 15px; line-height: 1.45; color: var(--bone-200); }
+.sd-small   { font-family: var(--ff-sans); font-size: 13px; line-height: 1.4; color: var(--ink-500); }
+.sd-num     { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
+
+/* Hairline */
+.sd-hair    { background: var(--hair); height: 1px; width: 100%; }
+.sd-hair-v  { background: var(--hair); width: 1px; align-self: stretch; }
+
+/* Glass card */
+.sd-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 0.5px solid var(--glass-brd);
+  border-radius: var(--r-3);
+}
+
+/* Kanji seal (decorative "dojo" mark) */
+.sd-seal {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  background: var(--crim-700);
+  color: var(--bone-100);
+  font-family: var(--ff-jp);
+  font-size: 22px; font-weight: 400;
+  line-height: 1;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.08);
+}
+
+/* Chips */
+.sd-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 9px; border-radius: var(--r-pill);
+  font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 0.5px solid var(--hair-strong);
+  color: var(--bone-200);
+  background: oklch(1 0 0 / 0.03);
+}
+.sd-chip.sit  { color: var(--sig-sit); border-color: oklch(0.78 0.15 100 / 0.4); background: oklch(0.78 0.15 100 / 0.08); }
+.sd-chip.hold { color: var(--sig-hold); border-color: oklch(0.70 0.08 180 / 0.4); background: oklch(0.70 0.08 180 / 0.08); }
+.sd-chip.exit { color: var(--sig-exit); border-color: oklch(0.62 0.19 25 / 0.4); background: oklch(0.62 0.19 25 / 0.1); }
+
+/* Buttons */
+.sd-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 20px; border-radius: 2px;
+  font-family: var(--ff-sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: none; cursor: pointer; color: var(--bone-100);
+  background: var(--crim-700);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.12), 0 0 0 1px oklch(1 0 0 / 0.04);
+}
+.sd-btn.ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hair-strong);
+  color: var(--bone-200);
+}
+.sd-btn.danger { background: transparent; color: var(--sig-exit); box-shadow: inset 0 0 0 1px oklch(0.62 0.19 25 / 0.5); }
+
+/* Stat */
+.sd-stat-num { font-family: var(--ff-mono); font-size: 32px; font-weight: 400; color: var(--bone-100); letter-spacing: -0.02em; }
+
+/* Vertical tick rule (dojo flag marker) */
+.sd-flag {
+  width: 3px; border-radius: 2px; background: var(--crim-700);
+  box-shadow: 0 0 14px var(--crim-glow);
+}
